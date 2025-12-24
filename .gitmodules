@@ -1,0 +1,15 @@
+[submodule "vendor/doctest"]
+	path = vendor/doctest
+	url = https://github.com/doctest/doctest.git
+[submodule "vendor/lzma-sdk"]
+	path = vendor/lzma-sdk
+	url = https://github.com/upx/upx-lzma-sdk.git
+[submodule "vendor/ucl"]
+	path = vendor/ucl
+	url = https://github.com/upx/upx-ucl.git
+[submodule "vendor/valgrind"]
+	path = vendor/valgrind
+	url = https://github.com/upx/upx-valgrind.git
+[submodule "vendor/zlib"]
+	path = vendor/zlib
+	url = https://github.com/upx/upx-zlib.git
