@@ -61,7 +61,7 @@ void show_header() {
     fg = con_fg(f, FG_GREEN);
     // clang-format off
     con_fprintf(f,
-                "                       Ultimate Packer for eXecutables\n"
+                "                 AvalonNet [AVLN-PACK] - Modified UPX\n"
                 "                          Copyright (C) 1996 - " UPX_VERSION_YEAR "\n"
 #if defined(UPX_VERSION_GITREV)
                 "UPX git-%6.6s%c"
