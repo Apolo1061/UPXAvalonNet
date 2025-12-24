@@ -3,13 +3,13 @@
 	url = https://github.com/doctest/doctest.git
 [submodule "vendor/lzma-sdk"]
 	path = vendor/lzma-sdk
-	url = https://github.com/upx/upx-lzma-sdk.git
+	url = https://github.com/upx/upx-vendor-lzma-sdk.git
 [submodule "vendor/ucl"]
 	path = vendor/ucl
-	url = https://github.com/upx/upx-ucl.git
+	url = https://github.com/upx/upx-vendor-ucl.git
 [submodule "vendor/valgrind"]
 	path = vendor/valgrind
-	url = https://github.com/upx/upx-valgrind.git
+	url = https://github.com/upx/upx-vendor-valgrind.git
 [submodule "vendor/zlib"]
 	path = vendor/zlib
-	url = https://github.com/upx/upx-zlib.git
+	url = https://github.com/upx/upx-vendor-zlib.git

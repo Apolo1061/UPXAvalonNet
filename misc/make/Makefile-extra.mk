@@ -375,10 +375,9 @@ UPX_CMAKE_CONFIG_FLAGS += $(call __add_cmake_config,UPX_CONFIG_EXTRA_COMPILE_OPT
 # check git submodules
 #***********************************************************************
 
-SUBMODULES = doctest lzma-sdk ucl valgrind zlib
-
-$(foreach 1,$(SUBMODULES),$(if $(wildcard vendor/$1/[CL]*),,\
-  $(error ERROR: missing git submodule '$1'; run 'git submodule update --init')))
+# SUBMODULES = doctest lzma-sdk ucl valgrind zlib
+# $(foreach 1,$(SUBMODULES),$(if $(wildcard vendor/$1/[CL]*),,\
+#   $(error ERROR: missing git submodule '$1'; run 'git submodule update --init')))
 
 endif # UPX_MAKEFILE_EXTRA_MK_INCLUDED
 
