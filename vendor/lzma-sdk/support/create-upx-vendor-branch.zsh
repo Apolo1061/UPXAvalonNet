@@ -37,10 +37,7 @@ devel_date=$(git show -s '--format=%ct' HEAD)
 # 1) copy devel files to $tmpdir
 tmpdir=$(mktemp -d -t upx-vendor-XXXXXX)
 [[ -d $tmpdir ]] || exit 1
-mkdir -p $tmpdir/include/valgrind
-cp -ai COPYING $tmpdir
-cp -ai callgrind/callgrind.h dhat/dhat.h drd/drd.h helgrind/helgrind.h memcheck/memcheck.h $tmpdir/include/valgrind
-sed 's/@VG_VER_MAJOR@/3/;s/@VG_VER_MINOR@/24/' < include/valgrind.h.in > $tmpdir/include/valgrind/valgrind.h
+cp -ai LICENSE.txt C $tmpdir
 # 2) create new orphan tmp-branch
 if git rev-parse -q --verify tmp-branch >/dev/null; then
     git branch -D tmp-branch
@@ -50,11 +47,10 @@ git rm -q -rf .
 # 3) copy $tmpdir files back to tmp-branch
 cp -ai $tmpdir/* .
 # 4) remove unused files
+rm -r C/7zip/Compress/{Branch,LZMA_Alone}
+rm C/7zip/Compress/LZMA_C/Lzma{DecodeSize,State,Test}*
 # 5) cleanup files (whitespace)
 find . -type d -name '.git' -prune -o -type f -print0 | xargs -0r sed -i -e 's/[ \t]*$//'
-for f in include/*/*.h; do expand -t 8 $f > $f.tmp; mv $f.tmp $f; done
-for f in include/*/*.h; do sed -i -e '/./,$!d' $f; done
-for f in include/*/*.h; do sed -i -e ':a' -e '/^\n*$/{$d;N;ba' -e '}' $f; done
 # 6) add files and commmit
 create_warning
 git add .
@@ -84,4 +80,4 @@ check_git_clean
 git checkout $current_branch
 
 # check that license files in master branch are up-to-date
-git diff --exit-code upstream..master COPYING
+git diff --exit-code devel..master LICENSE.txt
