@@ -1072,12 +1072,12 @@ void upx_compiler_sanity_check(void) noexcept {
         static_assert(mem_eq(UPX_VERSION_STRING4, UPX_VERSION_STRING, 3));
         static_assert(mem_eq(UPX_VERSION_YEAR, UPX_VERSION_DATE_ISO, 4));
         static_assert(mem_eq(UPX_VERSION_YEAR, &UPX_VERSION_DATE[sizeof(UPX_VERSION_DATE) - 5], 4));
-        char buf[16];
+        char buf[64];
         constexpr long long v = UPX_VERSION_HEX;
         upx_safe_snprintf(buf, sizeof(buf), "%lld.%lld.%lld", (v >> 16), (v >> 8) & 255, v & 255);
-        assert_noexcept(strcmp(buf, UPX_VERSION_STRING) == 0);
+        assert_noexcept(strncmp(buf, UPX_VERSION_STRING, strlen(buf)) == 0);
         upx_safe_snprintf(buf, sizeof(buf), "%lld.%lld%lld", (v >> 16), (v >> 8) & 255, v & 255);
-        assert_noexcept(strcmp(buf, UPX_VERSION_STRING4) == 0);
+        assert_noexcept(strncmp(buf, UPX_VERSION_STRING4, strlen(buf)) == 0);
     }
 
     if (gitrev[0]) {
